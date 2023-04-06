@@ -11,8 +11,9 @@ import { Router } from '@angular/router';
 export class SignupComponent {
   isLoading:boolean=false;
   apiError:string="";
+  isNotValidForm:boolean=false;
   constructor(private _authService: AuthService,private _router:Router){
-
+    this._authService.checkLocalStorage();
   }
 
 
@@ -43,6 +44,8 @@ error:(err:any) => {
   this.apiError = err.error.message;
     }
   })
+}else{
+  this.isNotValidForm=true;
 }
 
 }

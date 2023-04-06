@@ -5,39 +5,39 @@
     </div>
     <form [formGroup]="registerForm" (ngSubmit)="register(registerForm)">
         <label for="name " class="mb-2 ">Name :</label>
-        <input type="text " id="name " formControlName="name" class="form-control mb-3 " placeholder="please Enter Name ">
-        <div class="alert alert-danger" *ngIf="registerForm.get('name')?.errors&&registerForm.get('name')?.touched">
+        <input type="text " id="name" formControlName="name" class="form-control mb-3 " placeholder="please Enter Name ">
+        <div class="alert alert-danger" *ngIf="registerForm.get('name')?.errors&&(registerForm.get('name')?.touched||isNotValidForm)">
             <p class="mb-0" *ngIf="registerForm.get('name')?.getError('required')">Name is Required</p>
             <p class="mb-0" *ngIf="registerForm.get('name')?.getError('minlength')">Name Min length is 8</p>
             <p class="mb-0" *ngIf="registerForm.get('name')?.getError('maxlength')">Name Max length is 16</p>
         </div>
-        <label for="email " class="mb-2 ">Email :</label>
-        <input type="email " id="email " formControlName="email" class="form-control mb-3 " placeholder="please Enter email ">
-        <div class="alert alert-danger" *ngIf="registerForm.get('email')?.errors&&registerForm.get('email')?.touched">
+        <label for="email" class="mb-2">Email :</label>
+        <input type="email" id="email" formControlName="email" class="form-control mb-3 " placeholder="please Enter email ">
+        <div class="alert alert-danger" *ngIf="registerForm.get('email')?.errors&&(registerForm.get('email')?.touched||isNotValidForm)">
             <p class="mb-0" *ngIf="registerForm.get('email')?.getError('required')">Email is required</p>
             <p class="mb-0" *ngIf="registerForm.get('email')?.getError('email')">Email is invalid</p>
         </div>
-        <label for="password " class="mb-2 ">Password :</label>
-        <input type="password" id="password " formControlName="password" class="form-control mb-3 " placeholder="please Enter password ">
-        <div class="alert alert-danger" *ngIf="registerForm.get('password')?.errors&&registerForm.get('password')?.touched">
+        <label for="password " class="mb-2">Password :</label>
+        <input type="password" id="password" formControlName="password" class="form-control mb-3 " placeholder="please Enter password ">
+        <div class="alert alert-danger" *ngIf="registerForm.get('password')?.errors&&(registerForm.get('password')?.touched||isNotValidForm)">
             <p class="mb-0" *ngIf="registerForm.get('password')?.getError('required')">password is required</p>
             <p class="mb-0" *ngIf="registerForm.get('password')?.getError('pattern')">password is not valid</p>
         </div> <label for="rePassword" class="mb-2">RePassword :</label>
-        <input type="password" id="rePassword " formControlName="rePassword" class="form-control mb-3 " placeholder="please Enter rePassword ">
-        <div class="alert alert-danger" *ngIf="registerForm.get('rePassword')?.errors&&registerForm.get('rePassword')?.touched">
+        <input type="password" id="rePassword" formControlName="rePassword" class="form-control mb-3 " placeholder="please Enter rePassword ">
+        <div class="alert alert-danger" *ngIf="registerForm.get('rePassword')?.errors&&(registerForm.get('rePassword')?.touched||isNotValidForm)">
             <p class="mb-0" *ngIf="registerForm.get('rePassword')?.getError('required')">rePassword is required</p>
             <p class="mb-0" *ngIf="registerForm.get('rePassword')?.getError('pattern')">rePassword Min Length is 8</p>
         </div>
-        <label for="phone " class="mb-2 ">Phone :</label>
-        <input type="tel " id="phone " formControlName="phone" class="form-control mb-3 " placeholder="please Enter phone ">
-        <div class="alert alert-danger" *ngIf="registerForm.get('phone')?.errors&&registerForm.get('phone')?.touched">
+        <label for="phone " class="mb-2">Phone :</label>
+        <input type="tel " id="phone" formControlName="phone" class="form-control mb-3 " placeholder="please Enter phone ">
+        <div class="alert alert-danger" *ngIf="registerForm.get('phone')?.errors&&(registerForm.get('phone')?.touched||isNotValidForm)">
             <p class="mb-0" *ngIf="registerForm.get('phone')?.getError('required')">phone is required</p>
             <p class="mb-0" *ngIf="registerForm.get('phone')?.getError('minlength')">phone Min Length is 11</p>
             <p class="mb-0" *ngIf="registerForm.get('phone')?.getError('maxlength')">phone Min Length is 16</p>
         </div>
-        <button [disabled]="registerForm.invalid" class="btn btn-success ms-auto d-block " type="submit">
-<i  *ngIf="isLoading" class="fa-solid fa-spinner me-2" style="color: #ffffff;" ></i><span *ngIf="!isLoading">register</span>
+        <button class="btn btn-success ms-auto d-block " type="submit">
+<i  *ngIf="isLoading" class="fa-solid fa-spinner text-center fa-spin px-3" style="color: #ffffff;" ></i><span *ngIf="!isLoading">register</span>
         </button>
-        </ form>
+    </form>
 
 </div>
