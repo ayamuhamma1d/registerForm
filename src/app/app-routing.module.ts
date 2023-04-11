@@ -1,6 +1,5 @@
 
 import { NotFoundComponent } from './not-found/not-found.component';
-import { CartComponent } from './cart/cart.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './signup/signup.component';
@@ -19,12 +18,12 @@ const routes: Routes = [
   { path: 'home',canActivate:[AuthGuard], component: HomeComponent },
   { path: 'about', canActivate: [AuthGuard], component: AboutComponent },
   { path: 'categories', canActivate: [AuthGuard], component: CategoriesComponent },
-  { path: 'cart', canActivate: [AuthGuard], component: CartComponent },
   { path: 'products', canActivate: [AuthGuard], component: ProductsComponent },
   { path: 'brands', canActivate: [AuthGuard], component: BrandsComponent },
   { path: 'productDetails/:id', canActivate: [AuthGuard], component: ProductDetailsComponent},
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
+  { path: 'cart', loadChildren: () => import('./cart/cart.module').then(m => m.CartModule) },
   { path: '**', component: NotFoundComponent },];
 
 

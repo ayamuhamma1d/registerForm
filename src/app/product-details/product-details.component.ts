@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../product.service';
 import { Products } from '../products';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-product-details',
@@ -24,12 +25,12 @@ export class ProductDetailsComponent {
       0: {
         items: 1
       },
-  
+
     },
     nav: true
   }
 
-constructor(private _activatedRoute: ActivatedRoute ,private _productService: ProductService){
+constructor(private _activatedRoute: ActivatedRoute ,private _productService: ProductService,private _cartService: CartService){
 this._activatedRoute.paramMap.subscribe((res:any) =>{
   console.log(res.params.id);
 this.productId=res.params.id;
@@ -39,6 +40,13 @@ this.productId=res.params.id;
 console.log(res.data);
       this.productDetails = res.data;
     }
+  })
+}
+addProduct(id:string){
+  this._cartService.addToCart(id).subscribe({
+    next:(res)=>console.log(res),
+    error:(err)=>console.log(err)
+
   })
 }
 }

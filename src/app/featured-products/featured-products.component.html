@@ -1,6 +1,8 @@
 <div class="container py-5 ">
+    <input [(ngModel)]="searchTerm" type="text" class="form-control w-75 mx-auto my-5 ">
     <div class="row">
-        <div class="col-md-2" *ngFor="let products of allProducts">
+
+        <div class="col-md-2" *ngFor="let products of allProducts | search:searchTerm ">
             <app-product-item [product]="products">
             </app-product-item>
         </div>

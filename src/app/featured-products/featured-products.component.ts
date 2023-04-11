@@ -8,6 +8,7 @@ import { Products } from '../products';
   styleUrls: ['./featured-products.component.css']
 })
 export class FeaturedProductsComponent implements OnInit  {
+  searchTerm:string =''
 constructor(private _productsService: ProductService){}
 
   allProducts:any[]=[];
